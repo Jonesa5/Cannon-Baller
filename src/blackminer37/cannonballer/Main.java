@@ -303,7 +303,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
             if (all.textureId() == 1545) { // -1 is selected, 1545 is not selected
                 System.out.println("|Cannon-Baller| Selecting All");
                 all.click();
-                Condition.wait(() -> ctx.widgets.widget(WIDGET_ALL_ID).component(COMPONENT_ALL_ID).component(COMPONENT_ALL_SUB_ID).textureId() == 897, Random.nextInt(648, 1132), 5);
+                Condition.wait(() -> ctx.widgets.widget(WIDGET_ALL_ID).component(COMPONENT_ALL_ID).component(COMPONENT_ALL_SUB_ID).textureId() == 1545, Random.nextInt(648, 1132), 5);
                 updateWindow(); // The ALL button has been pressed
             }
             System.out.println("|Cannon-Baller| Smithing cannonballs");
