@@ -74,7 +74,7 @@ public class Skills {
     public int getExperiencePerHour() {
         int currentExp = ctx.skills.experience(skillIndex);
         int expGain = currentExp - getStartExperience();
-        experiencePerHour = (int) (((long) timer.getTimeFromStart() / 3600000d) * (double) (expGain));
+        experiencePerHour = (int)(expGain / (timer.getTimeFromStartInSeconds() / 3600.0));
         return experiencePerHour;
     }
 

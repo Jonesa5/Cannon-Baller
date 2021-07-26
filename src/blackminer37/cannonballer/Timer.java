@@ -34,6 +34,15 @@ public class Timer {
     }
 
     /**
+     * This resets the timer without having to create a new instance.
+     */
+    public void reset() {
+        startTime = System.currentTimeMillis();
+        resetDuration();
+        endTime = getCurrentTimeSeconds() + durationInSeconds;
+    }
+
+    /**
      * This pauses the timer at the current time.
      */
     public void pause() {
