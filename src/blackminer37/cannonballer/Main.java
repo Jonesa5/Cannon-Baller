@@ -419,7 +419,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
         int sellPer = Integer.parseInt(gpSellTextField.getText());
         int gpPer = Integer.parseInt(gpPerTextField.getText());
         int profit = (sellPer * 4) - gpPer;
-        profitLabel.setText("Profit: " + profit + " (" + (sellPer * smithed) + ")");
+        profitLabel.setText("Profit: " + profit + " (" + (profit * smithed) + ")");
         xpHr = skill.getExperiencePerHour();
         xpHrLabel.setText("xp/hr " + xpHr);
     }
