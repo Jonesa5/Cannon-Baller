@@ -9,6 +9,8 @@ A small amount of load time (usually 5-10 seconds) will happen, and this is just
 Very low requirements! Only 35 smithing and Dwarf Cannon quest are needed.
 Low starting capital makes it easy to manage risk while still maximizing profits.
 
+![img.png](GUI.png)
+
 ## Features
 
 * Easy click and play running
@@ -24,6 +26,10 @@ Low starting capital makes it easy to manage risk while still maximizing profits
 * Smelts ~1900 bars (7600 cannonballs) an hour consistently
   * ~450k profit (1.2m total value) an hour
 * Automatically suspends the bot and logs out when there are no more steel bars available or when the bars used limit has been reached
-  
 
-![img.png](GUI.png)
+## Future updates
+
+* Automatic traveling to the GE to sell cannonballs and to buy steel bars.
+* Automatic offloading onto a mule account
+
+
