@@ -308,7 +308,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
             }
             System.out.println("|Cannon-Baller| Smithing cannonballs");
             cannonballButton.click();
-            Condition.wait(() -> ctx.widgets.widget(WIDGET_CANNONBALL_ID).component(COMPONENT_CANNONBALL_ID).visible(), 250, 8); // Cannonball button was pressed
+            Condition.wait(() -> !ctx.widgets.widget(WIDGET_CANNONBALL_ID).component(COMPONENT_CANNONBALL_ID).visible(), 250, 8); // Cannonball button was pressed
             updateWindow();
             Condition.wait(() -> ctx.players.local().animation() != -1, Random.nextInt(948, 1304), 3); // Wait until you are actually making cannonballs
             if (ctx.players.local().animation() == -1) return; // If not smithing then try again
