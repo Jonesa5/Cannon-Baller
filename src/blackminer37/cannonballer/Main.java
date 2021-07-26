@@ -120,6 +120,9 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
      * This also decides which state the bot should start with by checking the inventory for steel bars
      */
     private void startSetUp() {
+        Condition.wait(() -> ctx.game.clientState() == Constants.GAME_LOADED, 500, 20);
+        Component playButton = ctx.widgets.widget(378).component(80);
+        Condition.wait(() -> playButton.visible() && playButton.click(), 250, 8);
         Condition.wait(() -> ctx.players.local().inViewport(), 500, 20);
         if (ctx.skills.level(Skill.Smithing.getIndex()) < 35) {
             System.out.println("|Cannon-Baller| Smithing level is too low!");
@@ -128,7 +131,8 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
             ctx.input.blocking(false);
             return;
         }
-        if (ctx.camera.pitch() < 99) ctx.camera.pitch(100);
+        if (ctx.camera.pitch() < 99) ctx.camera.pitch(true);
+        Condition.wait(() -> ctx.camera.pitch() == 99, 250, 16);
         if (ctx.game.tab() != Game.Tab.INVENTORY)
             Condition.wait(() -> ctx.game.tab(Game.Tab.INVENTORY), Random.nextInt(256, 394), 8);
         if (ctx.inventory.toStream().id(STEEL_BAR).isEmpty()) state = STATE.TRAVEL_FROM;
@@ -417,7 +421,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
         int profit = (sellPer * 4) - gpPer;
         profitLabel.setText("Profit: " + profit + " (" + (sellPer * smithed) + ")");
         xpHr = skill.getExperiencePerHour();
-        xpHrLabel.setText(xpHr + "");
+        xpHrLabel.setText("xp/hr " + xpHr);
     }
 
     /**

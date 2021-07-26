@@ -152,7 +152,7 @@ public class Timer {
      * @return adjustedTimeFromStart Integer
      */
     public int getTimeFromAdjustedStart() {
-        return (int)(System.currentTimeMillis() - (startTime - adjustTime));
+        return (int)(System.currentTimeMillis() - (startTime + adjustTime));
     }
 
     /**
@@ -160,10 +160,10 @@ public class Timer {
      * @return formattedAdjustedTimeFromStart String
      */
     public String getFormattedTimeFromAdjustedStart() {
-        long runTimeMili = System.currentTimeMillis() - (startTime - adjustTime);
+        long runTimeMili = System.currentTimeMillis() - (startTime + adjustTime);
         long seconds = (runTimeMili / 1000) % 60;
         long minutes = (runTimeMili / 60000) % 60;
-        long hours = (runTimeMili / 360000) % 24;
+        long hours = (runTimeMili / 3600000) % 24;
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 

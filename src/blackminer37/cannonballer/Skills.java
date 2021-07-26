@@ -24,7 +24,7 @@ public class Skills {
         this.ctx = ctx;
         this.skillIndex = skillIndex;
         this.startLevel = getLevel();
-        this.startExperience = getExperience();
+        this.startExperience = getExperience() - 1;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Skills {
     public int getExperiencePerHour() {
         int currentExp = ctx.skills.experience(skillIndex);
         int expGain = currentExp - getStartExperience();
-        experiencePerHour = (int) (3600000d / (long) timer.getTimeFromStart() * (double) (expGain));
+        experiencePerHour = (int) (((long) timer.getTimeFromStart() / 3600000d) * (double) (expGain));
         return experiencePerHour;
     }
 
