@@ -121,9 +121,11 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
      */
     private void startSetUp() {
         Condition.wait(() -> ctx.game.clientState() == Constants.GAME_LOADED, 500, 20);
-        Component playButton = ctx.widgets.widget(378).component(80);
-        Condition.wait(() -> playButton.visible() && playButton.click(), 250, 8);
-        Condition.wait(() -> ctx.players.local().inViewport(), 500, 20);
+        if (!ctx.players.local().inViewport()) {
+            Component playButton = ctx.widgets.widget(378).component(80);
+            Condition.wait(() -> playButton.visible() && playButton.click(), 250, 8);
+            Condition.wait(() -> ctx.players.local().inViewport(), 500, 20);
+        }
         if (ctx.skills.level(Skill.Smithing.getIndex()) < 35) {
             System.out.println("|Cannon-Baller| Smithing level is too low!");
             runningLabel.setText("Level too low!!");
