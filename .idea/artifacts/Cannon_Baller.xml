@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Cannon-Baller">
+    <output-path>$PROJECT_DIR$/out/artifacts/Cannon_Baller</output-path>
+    <root id="archive" name="Cannon-Baller.jar">
+      <element id="module-output" name="Cannon-Baller" />
+      <element id="library" level="application" name="PowBot" />
+    </root>
+  </artifact>
+</component>

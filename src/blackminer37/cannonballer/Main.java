@@ -483,7 +483,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        frame.setTitle("Cannon-Baller Pro");
+        frame.setTitle("Cannon-Baller");
         frame.setAlwaysOnTop(true);
         frame.setBackground(new Color(50, 50, 100));
         frame.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -494,7 +494,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
 
         nameLabel.setFont(new Font("Steelfish Outline", Font.PLAIN, 36)); // NOI18N
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        nameLabel.setText("Cannon-Baller Pro");
+        nameLabel.setText("Cannon-Baller");
 
         smithedLabel.setText("Smithed: 0");
 
