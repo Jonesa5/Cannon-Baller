@@ -496,7 +496,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         nameLabel.setText("Cannon-Baller Pro");
 
-        smithedLabel.setText("Crafted: 0");
+        smithedLabel.setText("Smithed: 0");
 
         timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
         timeLabel.setText("00:00:00");
