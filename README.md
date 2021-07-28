@@ -23,8 +23,8 @@ Low starting capital makes it easy to manage risk while still maximizing profits
 * Capable of limiting how many bars to use
 * Keeps track of gained experience as well as experience per hour and experience to next level
   * Also displays how many actions are left until the next level
-* Smelts ~1900 bars (7600 cannonballs) an hour consistently
-  * ~450k profit (1.2m total value) an hour
+* Smelts ~500 bars (2000 cannonballs) an hour consistently
+  * ~120k profit (320k total value) an hour
 * Automatically suspends the bot and logs out when there are no more steel bars available or when the bars used limit has been reached
 
 ## Future updates
