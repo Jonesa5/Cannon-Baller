@@ -26,7 +26,6 @@ import java.awt.*;
                 "A small amount of load time (usually 1-5 seconds) will happen and this is just for the window to pop up and for the bot to determine what needs to happen first.",
         version = "1.0.0",
         trialDays = 1L,
-        priv = true,
         mobileReady = true
 )
 
@@ -266,7 +265,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
         runningLabel.setText("To Furnace");
         double dist = ctx.players.local().tile().distanceTo(SMELTER);
         checkEnergy();
-        if (dist < INTERACTION_RANGE) {
+        if (dist <= INTERACTION_RANGE) {
             state = STATE.SMITH;
             return;
         }
@@ -326,8 +325,13 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
     private void travelFrom() {
         System.out.println("|Cannon-Baller| Traveling to the bank");
         runningLabel.setText("To Bank");
+        double dist = ctx.players.local().tile().distanceTo(BANK);
         checkEnergy();
-        if (ctx.players.local().tile().distanceTo(BANK) > MINIMAP_RANGE) // the bank is too far away for step, possible walked off for some reason?
+        if (dist <= INTERACTION_RANGE) {
+            state = STATE.BANK;
+            return;
+        }
+        if (dist > MINIMAP_RANGE) // the bank is too far away for step, possible walked off for some reason?
             ctx.movement.walkTo(BANK.derive(Random.nextInt(-1, 1), Random.nextInt(-1, 1)));
         else ctx.movement.step(BANK.derive(Random.nextInt(-1, 1), Random.nextInt(-1, 1))); // the bank is within range so step to it
         Condition.wait(() -> ctx.players.local().inMotion() && ctx.players.local().tile().distanceTo(BANK) <= INTERACTION_RANGE, Random.nextInt(648, 1132), 10);
