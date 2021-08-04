@@ -12,7 +12,7 @@ import java.awt.*;
 /**
  * @author BlackMiner37
  * @date July 17, 2021
- * @version 1.0.0
+ * @version 1.0.12
  * This script uses PowBot to control an Old School Runescape character
  * and automatically creates cannonballs for a profit as long as the character
  * has the required materials and skill level.
@@ -496,7 +496,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
         frame.setName("frame"); // NOI18N
         frame.setResizable(false);
 
-        nameLabel.setFont(new Font("Steelfish Outline", Font.PLAIN, 36)); // NOI18N
+        nameLabel.setFont(new Font("AR Julian", Font.PLAIN, 28)); // NOI18N
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         nameLabel.setText("Cannon-Baller");
 

@@ -1,0 +1,30 @@
+/**
+ * @author BlackMiner37
+ * @date July 17, 2021
+ * @version 1.0.0
+ * This script uses PowBot to control an Old School Runescape character
+ * and automatically creates cannonballs for a profit as long as the character
+ * has the required materials and skill level.
+ */
+
+July 25th, 2021 * Version 1.0.0
+* Original Commit
+
+July 26th, 2021 * Version 1.0.4
+* README added
+* "All" button texture ID fixed
+* Cannonball widget wait condition fixed
+* Fix profit calculation label
+
+July 28th, 2021 * Version 1.0.9
+* Code for when logging in automatically using the bot client has been optimized
+* Initiation typo fixed
+* Updated README
+* Removed "Pro" from the name due to the script being public
+* Fixed a profit calculation error
+
+August 3rd, 2021 * Version 1.0.12
+* Optimized traveling to and from the bank
+* Added VERSION to keep track of updates
+* Changed the font from a custom font to a normal font
+
