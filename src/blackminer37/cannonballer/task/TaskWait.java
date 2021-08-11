@@ -47,11 +47,13 @@ public class TaskWait extends Task {
             main.smithedAdd(4);
         }
 
-        if (main.smithed() / 4 >= Integer.parseInt(window.barsTextField().getText())) {
-            System.out.println("|Cannon-Baller| Max bars have been smithed!");
-            window.runningLabel().setText("Max Reached!");
-            main.logOutAndSuspend();
-        }
+        try {
+            if (main.smithed() / 4 >= Integer.parseInt(window.barsTextField().getText())) {
+                System.out.println("|Cannon-Baller| Max bars have been smithed!");
+                window.runningLabel().setText("Max Reached!");
+                main.logOutAndSuspend();
+            }
+        } catch (Exception e) { System.out.println("|Cannon-Baller| TastWait.execute() TryCatch ERROR"); }
 
         if (ctx.inventory.toStream().id(STEEL_BAR).isEmpty()) { // We are out of steel bars
             System.out.println("|Cannon-Baller| Finished Smithing");

@@ -42,10 +42,12 @@ public class Window extends ClientAccessor {
         progressBar.setValue(map(ctx.skills.experience(Skill.Smithing.getIndex()), ctx.skills.experienceAt(level), ctx.skills.experienceAt(level + 1), 0, 100));
         xpTillLabel.setText("" + expTil);
 
-        int sellPer = Integer.parseInt(gpSellTextField.getText());
-        int gpPer = Integer.parseInt(gpPerTextField.getText());
-        int profit = (sellPer * 4) - gpPer;
-        profitLabel.setText("Profit: " + profit + " (" + (profit * (main.smithed() / 4)) + ")");
+        try {
+            int sellPer = Integer.parseInt(gpSellTextField.getText());
+            int gpPer = Integer.parseInt(gpPerTextField.getText());
+            int profit = (sellPer * 4) - gpPer;
+            profitLabel.setText("Profit: " + profit + " (" + (profit * (main.smithed() / 4)) + ")");
+        } catch(Exception e) { System.out.println("|Cannon-Baller| Window.updateWindow() TryCatch ERROR!"); }
 
         xpHr = skill.getExperiencePerHour();
         xpHrLabel.setText("xp/hr " + xpHr);

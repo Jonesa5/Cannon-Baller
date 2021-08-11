@@ -28,7 +28,7 @@ August 3rd, 2021 * Version 1.0.12
 * Added VERSION to keep track of updates
 * Changed the font from a custom font to a normal font
 
-August 11th, 2021 * Version 2.0.7
+August 11th, 2021 * Version 2.0.8
 * Reworked the whole script to be more modular and separated
 * Separated chunks of code to make it more readable
 * Removed a bunch of un-needed code
@@ -36,5 +36,6 @@ August 11th, 2021 * Version 2.0.7
 * Optimized widget searching code
 * Added automatic buy and sell price setting
 * Fixed timer pause time not being accounted for
+* Added try catch to the text fields to prevent crashes
 
 
