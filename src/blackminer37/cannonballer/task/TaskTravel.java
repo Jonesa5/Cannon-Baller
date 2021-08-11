@@ -28,6 +28,10 @@ public class TaskTravel extends Task {
 
     @Override
     public boolean activate() {
+        if (!toSmelter && ctx.bank.opened()) {
+            completed = true;
+            return false;
+        }
         return !completed
                 && !ctx.players.local().inMotion();
     }

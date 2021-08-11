@@ -68,13 +68,13 @@ public class TaskSmith extends Task {
         Widget cannonballWidget = ctx.widgets.widget(WIDGET_CANNONBALL_ID); // The cannonball widget menu
         Component cannonballButton = cannonballWidget.component(COMPONENT_CANNONBALL_ID).component(COMPONENT_CANNONBALL_SUB_ID);  // The cannonball button on the widget
 
-        Condition.wait(cannonballWidget::valid, Random.nextInt(648, 1132), 5);
+        Condition.wait(cannonballWidget::valid, Random.nextInt(648, 1132), 2);
         if (cannonballButton.visible()) {
 
             Component all = cannonballWidget.component(COMPONENT_ALL_ID).component(COMPONENT_ALL_SUB_ID); // The ALL button on the widget
             if (all.textureId() == 1545) { // -1 is selected, 1545 is not selected
                 System.out.println("|Cannon-Baller| Selecting All");
-                Condition.wait(all::click, Random.nextInt(648, 1132), 5); // The ALL button has been pressed
+                Condition.wait(all::click, Random.nextInt(648, 873), 2); // The ALL button has been pressed
             }
 
             System.out.println("|Cannon-Baller| Smithing cannonballs");

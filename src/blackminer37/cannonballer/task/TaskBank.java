@@ -30,7 +30,6 @@ public class TaskBank extends Task {
     @Override
     public boolean activate() {
         return !completed
-                && !ctx.bank.opened()
                 && ctx.bank.nearest().tile().distanceTo(ctx.players.local()) < Finals.INTERACTION_RANGE
                 && !ctx.players.local().interacting().valid()
                 && !ctx.players.local().inMotion();
@@ -44,7 +43,10 @@ public class TaskBank extends Task {
     public void execute() {
         System.out.println("|Cannon-Baller| Banking goods");
         window.runningLabel().setText("Banking");
+
         if (!ctx.bank.opened() && !ctx.bank.open()) return;
+        Condition.wait(ctx.bank::opened, Random.nextInt(632, 948), 2);
+
         if (ctx.bank.currentTab() != 0) ctx.bank.currentTab(0); // Open the general tab
 
         if (window.updateButtonWaiting()) {
