@@ -1,7 +1,6 @@
 package blackminer37.cannonballer.task;
 
 import blackminer37.cannonballer.Finals;
-import blackminer37.cannonballer.Main;
 import blackminer37.cannonballer.Window;
 import org.powerbot.script.Condition;
 import org.powerbot.script.Random;
