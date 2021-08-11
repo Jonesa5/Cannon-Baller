@@ -27,7 +27,8 @@ public class TaskWait extends Task {
 
     @Override
     public boolean activate() {
-        return !completed && !ctx.players.local().inMotion();
+        return !completed
+                && !ctx.players.local().inMotion();
     }
 
     /**

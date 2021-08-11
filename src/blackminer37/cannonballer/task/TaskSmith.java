@@ -1,6 +1,7 @@
 package blackminer37.cannonballer.task;
 
 import blackminer37.cannonballer.Finals;
+import blackminer37.cannonballer.Main;
 import blackminer37.cannonballer.Window;
 import org.powerbot.script.Condition;
 import org.powerbot.script.Random;
@@ -26,6 +27,8 @@ public class TaskSmith extends Task {
     private final int COMPONENT_ALL_ID = 12;
     private final int COMPONENT_ALL_SUB_ID = 0;
 
+    private GameObject smelter;
+
     private final Window window;
 
     public TaskSmith(ClientContext ctx, Window window) {
@@ -35,7 +38,11 @@ public class TaskSmith extends Task {
 
     @Override
     public boolean activate() {
+        smelter = ctx.objects.toStream().within(Finals.INTERACTION_RANGE).name("Furnace").first();
         return !completed
+                && smelter != GameObject.NIL
+                && smelter.inViewport()
+                && smelter.tile().distanceTo(ctx.players.local().tile()) <= Finals.INTERACTION_RANGE
                 && !ctx.players.local().interacting().valid()
                 && !ctx.players.local().inMotion();
     }
@@ -57,11 +64,6 @@ public class TaskSmith extends Task {
             }
         }
 
-        GameObject smelter = ctx.objects.toStream().within(Finals.INTERACTION_RANGE).name("Furnace").first();
-        if (smelter == GameObject.NIL) {
-            //completed = true;
-            return;
-        }
         smelter.interact("Smelt");
 
         Widget cannonballWidget = ctx.widgets.widget(WIDGET_CANNONBALL_ID); // The cannonball widget menu

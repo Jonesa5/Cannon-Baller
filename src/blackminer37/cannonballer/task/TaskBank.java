@@ -30,9 +30,10 @@ public class TaskBank extends Task {
     @Override
     public boolean activate() {
         return !completed
+                && !ctx.bank.opened()
+                && ctx.bank.nearest().tile().distanceTo(ctx.players.local()) < Finals.INTERACTION_RANGE
                 && !ctx.players.local().interacting().valid()
-                && !ctx.players.local().inMotion()
-                && ctx.bank.nearest().tile().distanceTo(ctx.players.local()) < Finals.INTERACTION_RANGE;
+                && !ctx.players.local().inMotion();
     }
 
     /**
