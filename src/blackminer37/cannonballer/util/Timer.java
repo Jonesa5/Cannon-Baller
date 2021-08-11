@@ -1,4 +1,4 @@
-package blackminer37.cannonballer;
+package blackminer37.cannonballer.util;
 
 /**
  * @author BlackMiner37

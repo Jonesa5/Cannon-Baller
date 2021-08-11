@@ -1,4 +1,4 @@
-package blackminer37.cannonballer;
+package blackminer37.cannonballer.util;
 
 import org.powerbot.script.rt4.ClientContext;
 
