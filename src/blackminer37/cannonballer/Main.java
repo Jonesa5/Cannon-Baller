@@ -4,7 +4,6 @@ import blackminer37.cannonballer.task.TaskBank;
 import blackminer37.cannonballer.task.TaskSmith;
 import blackminer37.cannonballer.task.TaskTravel;
 import blackminer37.cannonballer.task.TaskWait;
-import blackminer37.cannonballer.util.Timer;
 import org.powbot.walking.model.Skill;
 import org.powerbot.script.*;
 import org.powerbot.script.rt4.*;
@@ -14,8 +13,8 @@ import java.awt.*;
 
 /**
  * @author BlackMiner37
- * @date August 10, 2021
- * @version 2.0.6
+ * @date August 11, 2021
+ * @version 2.0.7
  * This script uses PowBot to control an Old School Runescape character
  * and automatically creates cannonballs for a profit as long as the character
  * has the required materials and skill level.
@@ -27,7 +26,7 @@ import java.awt.*;
                 "Start in Edgeville, and it will detect whether to start at the bank or go straight to the furnace. " +
                 "As soon as the start button is pressed it will start running the bot. " +
                 "A small amount of load time (usually 1-5 seconds) will happen and this is just for the window to pop up and for the bot to determine what needs to happen first.",
-        version = "2.0.6",
+        version = "2.0.7",
         trialDays = 1L,
         mobileReady = true
 )
@@ -37,7 +36,6 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
     private Window window;
     private final int STEEL_BAR = 2353;
     private final int CANNONBALL = 2;
-    private Timer timer;
 
     private boolean showTTL = true;
     private int smithed = 0;
@@ -70,7 +68,6 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
     @Override
     public void start() {
         System.out.println("|Cannon-Baller| Starting");
-        timer = new Timer();
         window = new Window(ctx, this);
         window.initComponents();
         taskBank = new TaskBank(ctx, window, this);
@@ -144,12 +141,12 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
      * If the bot is resumed from a suspended state this is where the bot is told to start running again.
      */
     private void tick() {
-        timerBefore = timer.getTimeFromStartInSeconds();
+        timerBefore = window.timer().getTimeFromStartInSeconds();
 
         if (ctx.controller.isSuspended() && ctx.game.clientState() == Constants.GAME_LOADED) {
             window.runningLabel().setText("Running");
             ctx.controller.resume();
-            timer.resume();
+            window.timer().resume();
         }
 
         if (idleTimer >= Random.nextInt(6, 10)) {
@@ -164,7 +161,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
         if (idleTimer > 0) window.runningLabel().setText("Idling: " + idleTimer);
 
         if (showTTL)
-            window.ttlLabel().setText("" + timer.getFormattedTimeFromGivenTime((int) ((int) (window.expTil() / (window.xpHr() / 3600.0)) * 1000.0)));
+            window.ttlLabel().setText("" + window.timer().getFormattedTimeFromGivenTime((int) ((int) (window.expTil() / (window.xpHr() / 3600.0)) * 1000.0)));
             else window.ttlLabel().setText("Actions: " + (window.expTil() / window.xpPer()));
         showTTL = !showTTL;
         window.updateWindow();
@@ -177,7 +174,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
      */
     @Override
     public void poll() {
-        if (timer.getTimeFromStartInSeconds() > timerBefore) tick();
+        if (window.timer().getTimeFromStartInSeconds() > timerBefore) tick();
 
         if (ctx.game.clientState() == Constants.GAME_LOADED) { // The client is running and the player is logged in
 
@@ -223,7 +220,7 @@ public class Main extends PollingScript<ClientContext> implements PaintListener 
             }
         } else {
             window.runningLabel().setText("Suspended");
-            timer.pause();
+            window.timer().pause();
         }
     }
 

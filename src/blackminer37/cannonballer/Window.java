@@ -324,4 +324,6 @@ public class Window extends ClientAccessor {
 
     public void gpPerTextField(String s) { gpPerTextField.setText(s); }
     public void gpSellPerTextField(String s) { gpSellTextField.setText(s); }
+
+    public Timer timer() { return timer; }
 }
