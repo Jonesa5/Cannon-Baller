@@ -63,13 +63,15 @@ public class TaskSmith extends Task {
             }
         }
 
-        smelter.interact("Smelt");
-
         Widget cannonballWidget = ctx.widgets.widget(WIDGET_CANNONBALL_ID); // The cannonball widget menu
         Component cannonballButton = cannonballWidget.component(COMPONENT_CANNONBALL_ID).component(COMPONENT_CANNONBALL_SUB_ID);  // The cannonball button on the widget
 
-        Condition.wait(cannonballWidget::valid, Random.nextInt(648, 1132), 2);
-        if (cannonballButton.visible()) {
+        if (!cannonballButton.visible()) {
+
+            smelter.interact("Smelt");
+            Condition.wait(cannonballButton::visible, Random.nextInt(1123, 1345), 2);
+
+        } else {
 
             Component all = cannonballWidget.component(COMPONENT_ALL_ID).component(COMPONENT_ALL_SUB_ID); // The ALL button on the widget
             if (all.textureId() == 1545) { // -1 is selected, 1545 is not selected
@@ -84,6 +86,7 @@ public class TaskSmith extends Task {
             if (ctx.players.local().animation() == -1) return; // If not smithing then try again
             completed = true;
             System.out.println("|Cannon-Baller| Waiting to finish Smithing");
+
         }
     }
 

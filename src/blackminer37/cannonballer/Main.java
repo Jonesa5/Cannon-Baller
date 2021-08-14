@@ -14,7 +14,7 @@ import java.awt.*;
 /**
  * @author BlackMiner37
  * @date August 11, 2021
- * @version 2.0.12
+ * @version 2.0.13
  * This script uses PowBot to control an Old School Runescape character
  * and automatically creates cannonballs for a profit as long as the character
  * has the required materials and skill level.
@@ -26,7 +26,7 @@ import java.awt.*;
                 "Start in Edgeville, and it will detect whether to start at the bank or go straight to the furnace. " +
                 "As soon as the start button is pressed it will start running the bot. " +
                 "A small amount of load time (usually 1-5 seconds) will happen and this is just for the window to pop up and for the bot to determine what needs to happen first.",
-        version = "2.0.12",
+        version = "2.0.13",
         trialDays = 1L,
         mobileReady = true
 )

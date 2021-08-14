@@ -42,4 +42,6 @@ August 11th, 2021 * Version 2.0.12
 * Minor bug fixes with interacting with the bank and furnace
 * Shortened several wait conditions to speed up fixing errors in running
 
+August 13, 2021 * Version 2.0.13
+* Optimized some wait conditions
 
